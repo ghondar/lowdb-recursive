@@ -1,0 +1,378 @@
+{
+  "carreras": [
+    {
+      "title": "hola mundo",
+      "numero": 3,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 3
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 5,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 6,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "coliflor",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "coliflor",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "coliflor",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "coliflor",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "tomate",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "tomate",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 3
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 5,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "lalala",
+      "numero": 4,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "fdasfsfd",
+      "numero": 3424,
+      "songs": [
+        {
+          "nombre": "asdf",
+          "rating": 4.3,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        },
+        {
+          "nombre": "dfsaf",
+          "rating": 4,
+          "cursos": [
+            {
+              "nombre": "lenguaje",
+              "id": 1
+            },
+            {
+              "nombre": "matematica",
+              "id": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
