@@ -1,6 +1,6 @@
 # lowdb-recursive
 
-> Quick dot notation seeker
+> Quick dot-notation seeker
 
 ## Add Documents
 
