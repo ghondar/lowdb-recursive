@@ -2,6 +2,8 @@
 
 > Quick dot-notation seeker
 
+if you know for the first time lowdb, please go [here](https://github.com/typicode/lowdb)
+
 ## Add Documents
 
 ```javascript
