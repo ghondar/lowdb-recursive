@@ -101,8 +101,28 @@ db('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
 
 db('universidades')
   .chain()
-  .findAll({ 'carreras.cursos.nombre': 'cuantica'})
-  .updateAll({'carreras.cursos.nombre': 'mecanica'}, {'nombre': 'cuantica'})
+  .updateAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'mecanica'})
+  .value()
+
+```
+## Push value
+  
+```javascript
+
+db('universidades')
+  .chain()
+  .pushAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'javascript', 'id': 100})
+  .value()
+
+```
+
+## Remove value
+  
+```javascript
+
+db('universidades')
+  .chain()
+  .removeAll({'carreras.cursos.nombre': 'cuantica'})
   .value()
 
 ```

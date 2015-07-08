@@ -39,7 +39,7 @@ db('universidades')
 console.log(
 db('universidades')
   .chain()
-  .pushAll({'carreras.cursos.nombre': 'cuantica'}, {"nombre": "javascript","id": 100})
+  .pushAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'javascript', 'id': 100})
   .value()
 )
 
