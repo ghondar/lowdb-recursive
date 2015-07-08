@@ -7,7 +7,7 @@ var DataBase = function(path){
     async: false
   });
   db._.mixin({
-    recursive: function(update, array, where, value, cb, count, envio){
+    recursive: function(type, update, array, where, value, cb, count, envio){
       where = where.split('.');
       var that = this;
       var list = [];
@@ -19,23 +19,23 @@ var DataBase = function(path){
         var state = where.shift();
         _.forEach(array, function(document){
           if(document[state] && count == 1)
-            that.recursive(update, document[state], where.join('.'), value, cb, count, document);
+            that.recursive(type, update, document[state], where.join('.'), value, cb, count, document);
           else
-            that.recursive(update, document[state], where.join('.'), value, cb, count, envio);
+            that.recursive(type, update, document[state], where.join('.'), value, cb, count, envio);
         })
       }else{
         var json = {};
         json[where.join()] = value;
-        if(update){
-          var value = _.where(array, update);
+        if(type === 'UPDATE'){
+          var value = _.where(array, json);
           _.forEach(value, function(val){
-            _.assign(val, json)
+            _.assign(val, update)
           });
           if(count === 1)
             cb(dato);
           else
             cb(envio)
-        }else{
+        }else if(type === 'FIND'){
           // console.log(array, json)
           var dato = _.where(array, json);
           if(dato.length > 0){        
@@ -44,14 +44,29 @@ var DataBase = function(path){
             else
               cb(envio)
           }
-        }      
+        }else if(type === 'PUSH'){
+          var value = _.where(array, json);
+          if(value.length > 0)
+            array.push(update);
+          if(count === 1)
+            cb(dato);
+          else
+            cb(envio)
+        }else if(type === 'REMOVE'){
+          var temporal = (count === 1) ? dato : envio;
+          var value = _.where(array, json);
+          _.forEach(value, function(val){
+            _.remove(array, val);
+          });
+          cb(temporal);
+        }
       }
     },
     findAll: function(array, where){
       var list = []; 
       var that = this;
       _.forIn(where, function(value, key){
-          that.recursive(null, array, key, value, function(dato){
+          that.recursive('FIND',null, array, key, value, function(dato){
           if(!(Object.prototype.toString.call( dato ) === '[object Array]') )
             list.push(dato)
           else
@@ -77,7 +92,7 @@ var DataBase = function(path){
       var list = []; 
       var that = this;
       _.forIn(update, function(value, key){
-        that.recursive(where, array, key, value, function(dato){
+        that.recursive('UPDATE', where, array, key, value, function(dato){
           if(!(Object.prototype.toString.call( dato ) === '[object Array]') )
             list.push(dato)
           else
@@ -88,6 +103,58 @@ var DataBase = function(path){
         array = list;
         list = [];
       });
+      return array;
+    },
+    pushAll: function(array,where, push){
+      var list = []; 
+      var that = this;
+      _.forIn(where, function(value, key){
+        that.recursive('PUSH', push, array, key, value, function(dato){
+          if(!(Object.prototype.toString.call( dato ) === '[object Array]') )
+            list.push(dato)
+          else
+            _.forEach(dato, function(value){
+              list.push(value)
+            });
+        });
+        array = list;
+        list = [];
+      });
+      var val = {};
+      var listFinal = []
+      _.forEach(array, function(document){
+        if(!_.isEqual(val, document)){
+          val = document
+          listFinal.push(document);
+        }
+      })
+      array = listFinal;
+      return array;
+    },
+    removeAll: function(array, remove){
+      var list = []; 
+      var that = this;
+      _.forIn(remove, function(value, key){
+        that.recursive('REMOVE',null, array, key, value, function(dato){
+          if(!(Object.prototype.toString.call( dato ) === '[object Array]') )
+            list.push(dato)
+          else
+            _.forEach(dato, function(value){
+              list.push(value)
+            });
+        });
+        array = list;
+        list = [];
+      });
+      var val = {};
+      var listFinal = []
+      _.forEach(array, function(document){
+        if(!_.isEqual(val, document)){
+          val = document
+          listFinal.push(document);
+        }
+      })
+      array = listFinal;
       return array;
     }
   });

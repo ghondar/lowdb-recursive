@@ -31,7 +31,22 @@ db('universidades')
 console.log(
 db('universidades')
   .chain()
-  .findAll({ 'carreras.cursos.nombre': 'cuantica'})
-  .updateAll({'carreras.cursos.nombre': 'mecanica'}, {'nombre': 'cuantica'})
+  .updateAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'mecanica'})
+  .value()
+)
+
+// push all fields with cuantica value at third level
+console.log(
+db('universidades')
+  .chain()
+  .pushAll({'carreras.cursos.nombre': 'cuantica'}, {"nombre": "javascript","id": 100})
+  .value()
+)
+
+// remove value at third level
+console.log(
+db('universidades')
+  .chain()
+  .removeAll({'carreras.cursos.nombre': 'cuantica'})
   .value()
 )
