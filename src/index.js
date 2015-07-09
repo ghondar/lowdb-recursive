@@ -46,9 +46,15 @@ var DataBase = function(path){
           }
         }else if(type === 'PUSH'){
           if((!update)){
-            _.forEach(array, function(document){
-              document[where.join()].push(value);
-            })
+            if(typeof value === 'object' && _.keys(value).length > 0)
+              _.forEach(array, function(document){
+                document[where.join()].push(value);
+              })
+            else{
+              _.forEach(array, function(document){
+                _.merge(document,json);
+              })
+            }
           }else{
             var value = _.where(array, json);
             if(value.length > 0 )
