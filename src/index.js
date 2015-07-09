@@ -46,7 +46,7 @@ var DataBase = function(path){
           }
         }else if(type === 'PUSH'){
           var value = _.where(array, json);
-          if(value.length > 0)
+          if(value.length > 0 || array.length == 0)
             array.push(update);
           if(count === 1)
             cb(dato);
