@@ -11,9 +11,9 @@ var collection = [{"nombre":"Villareal","numero":1,"carreras":[{"nombre":"Fisico
 /* 
   run this command one time
 */
-collection.forEach(function(document){
-  db('universidades').push(document);
-});
+// collection.forEach(function(document){
+//   db('universidades').push(document);
+// });
 
 /* Result:
           [ { nombre: 'Villareal',
@@ -23,7 +23,7 @@ collection.forEach(function(document){
 console.log(
 db('universidades')
   .chain()
-  .findAll({ 'carreras.cursos.nombre': 'cuantica'})
+  .whereAll({ 'carreras.cursos.nombre': 'cuantica'})
   .value()
 )
 
@@ -34,12 +34,27 @@ db('universidades')
   .updateAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'mecanica'})
   .value()
 )
+//or
+console.log(
+db('universidades')
+  .chain()
+  .findAll('carreras.cursos.nombre': 'cuantica')
+  .updateAll({'nombre': 'mecanica'})
+  .value()
+)
 
 // push all fields with cuantica value at third level
 console.log(
 db('universidades')
   .chain()
   .pushAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'javascript', 'id': 100})
+  .value()
+)
+//or
+console.log(db('universidades')
+  .chain()
+  .findAll({"carreras.rating": 4.3})
+  .pushAll({"cursos": {'nombre': 'javascript', 'id': 100})
   .value()
 )
 

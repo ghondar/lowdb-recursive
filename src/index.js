@@ -27,16 +27,44 @@ var DataBase = function(path){
         var json = {};
         json[where.join()] = value;
         if(type === 'UPDATE'){
-          var value = _.where(array, json);
-          _.forEach(value, function(val){
-            _.assign(val, update)
-          });
-          if(count === 1)
-            cb(dato);
-          else
+          if((!update)){
+            _.forEach(array, function(document){
+              _.assign(document, json);
+            });
+            cb(array);
+          }else{
+            var value = _.where(array, json);
+            _.forEach(value, function(val){
+              _.assign(val, update)
+            });
             cb(envio)
+          }
         }else if(type === 'FIND'){
-          // console.log(array, json)
+          var dato = _.where(array, json);
+          if(dato.length > 0){
+            cb(dato);
+          }
+        }else if(type === 'PUSH'){
+          if((!update)){
+            _.forEach(array, function(document){
+              document[where.join()].push(value);
+            })
+          }else{
+            var value = _.where(array, json);
+            if(value.length > 0 )
+              array.push(update);
+          }
+          cb(array)
+        }else if(type === 'REMOVE'){
+          var temporal = (count === 1) ? dato : envio;
+          var value = _.where(array, json);
+          var lista = [];
+          _.forEach(value, function(val){
+            _.remove(array, val);
+            lista.push(val)
+          });
+          cb(lista);
+        }else if(type === 'WHERE'){
           var dato = _.where(array, json);
           if(dato.length > 0){        
             if(count === 1)
@@ -44,21 +72,6 @@ var DataBase = function(path){
             else
               cb(envio)
           }
-        }else if(type === 'PUSH'){
-          var value = _.where(array, json);
-          if(value.length > 0 || array.length == 0)
-            array.push(update);
-          if(count === 1)
-            cb(dato);
-          else
-            cb(envio)
-        }else if(type === 'REMOVE'){
-          var temporal = (count === 1) ? dato : envio;
-          var value = _.where(array, json);
-          _.forEach(value, function(val){
-            _.remove(array, val);
-          });
-          cb(temporal);
         }
       }
     },
@@ -88,11 +101,11 @@ var DataBase = function(path){
       array = listFinal;
       return array;
     },
-    updateAll: function(array, update, where){
+    whereAll: function(array, where){
       var list = []; 
       var that = this;
-      _.forIn(update, function(value, key){
-        that.recursive('UPDATE', where, array, key, value, function(dato){
+      _.forIn(where, function(value, key){
+          that.recursive('FIND',null, array, key, value, function(dato){
           if(!(Object.prototype.toString.call( dato ) === '[object Array]') )
             list.push(dato)
           else
@@ -103,9 +116,25 @@ var DataBase = function(path){
         array = list;
         list = [];
       });
+      var val = {};
+      var listFinal = []
+      _.forEach(array, function(document){
+        if(!_.isEqual(val, document)){
+          val = document;
+          listFinal.push(document);
+        }
+      })
+      array = listFinal;
       return array;
     },
-    pushAll: function(array,where, push){
+    updateAll: function(array, update, where){
+      var that = this;
+      _.forIn(update, function(value, key){
+        that.recursive('UPDATE', where, array, key, value, function(dato){});
+      });
+      return array;
+    },
+    pushAll: function(array, where, push){
       var list = []; 
       var that = this;
       _.forIn(where, function(value, key){

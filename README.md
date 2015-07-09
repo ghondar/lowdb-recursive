@@ -91,7 +91,7 @@ collection.forEach(function(document){
 
 ```javascript
 
-db('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
+db('universidades').whereAll({ 'carreras.cursos.nombre': 'cuantica'})
 
 ```
 
@@ -104,6 +104,13 @@ db('universidades')
   .updateAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'mecanica'})
   .value()
 
+//or
+db('universidades')
+  .chain()
+  .findAll('carreras.cursos.nombre': 'cuantica')
+  .updateAll({'nombre': 'mecanica'})
+  .value()
+
 ```
 ## Push value
   
@@ -112,6 +119,13 @@ db('universidades')
 db('universidades')
   .chain()
   .pushAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'javascript', 'id': 100})
+  .value()
+
+//or
+db('universidades')
+  .chain()
+  .findAll({"carreras.rating": 4.3})
+  .pushAll({"cursos": {'nombre': 'javascript', 'id': 100})
   .value()
 
 ```
