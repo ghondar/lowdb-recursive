@@ -91,7 +91,20 @@ collection.forEach(function(document){
 
 ```javascript
 
+/*
+  [ { nombre: 'Villareal',
+    numero: 1,
+    carreras: [ [Object], [Object] ] } ]
+*/
+
 db('universidades').whereAll({ 'carreras.cursos.nombre': 'cuantica'})
+
+//or
+/*
+  [ { nombre: 'cuantica', id: 1 } ]
+*/
+
+db('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
 
 ```
 

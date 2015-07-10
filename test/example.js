@@ -27,6 +27,13 @@ db('universidades')
   .value()
 )
 
+//or
+/*
+  [ { nombre: 'cuantica', id: 1 } ]
+*/
+
+db('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
+
 //modifies all fields with cuantica value
 console.log(
 db('universidades')
