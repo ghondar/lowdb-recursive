@@ -111,7 +111,7 @@ var DataBase = function(path){
       var list = []; 
       var that = this;
       _.forIn(where, function(value, key){
-          that.recursive('FIND',null, array, key, value, function(dato){
+          that.recursive('WHERE',null, array, key, value, function(dato){
           if(!(Object.prototype.toString.call( dato ) === '[object Array]') )
             list.push(dato)
           else
