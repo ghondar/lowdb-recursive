@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/abgv9221/lowdb-recursive",
   "dependencies": {
-    "lodash": "^3.10.0",
-    "lowdb": "^0.10.1"
+    "lodash": "3.10.1",
+    "lowdb": "0.10.2"
   }
 }
