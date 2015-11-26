@@ -1,10 +1,11 @@
 {
   "name": "lowdb-recursive",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "recursive extension based on lowdb",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && mocha",
+    "precommit": "npm test"
   },
   "repository": {
     "type": "git",
@@ -33,5 +34,10 @@
   "dependencies": {
     "lodash": "^3.10.1",
     "lowdb": "^0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "rimraf": "^2.4.4",
+    "standard": "^5.4.1"
   }
 }
