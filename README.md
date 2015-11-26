@@ -1,6 +1,6 @@
-# lowdb-recursive
+# lowdb-recursive [![Build Status](https://travis-ci.org/ghondar/lowdb-recursive.svg?branch=master)](https://travis-ci.org/ghondar/lowdb-recursive)
 
-> Quick dot-notation seeker
+> Quick dot-notation seeker 
 
 if you know for the first time lowdb, please go [here](https://github.com/typicode/lowdb)
 
