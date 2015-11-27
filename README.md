@@ -1,4 +1,9 @@
-# lowdb-recursive [![Build Status](https://travis-ci.org/ghondar/lowdb-recursive.svg?branch=master)](https://travis-ci.org/ghondar/lowdb-recursive)
+# lowdb-recursive
+
+[![Build Status](https://travis-ci.org/ghondar/lowdb-recursive.svg?branch=master)](https://travis-ci.org/ghondar/lowdb-recursive)
+[![Dependencies](https://david-dm.org/Ghondar/lowdb-recursive.svg?style=flat-square)](https://david-dm.org/Ghondar/lowdb-recursive)
+[![DevDependencies](https://david-dm.org/Ghondar/lowdb-recursive/dev-status.svg?style=flat-square)](https://david-dm.org/Ghondar/lowdb-recursive#info=devDependencies&view=list)
+[![Donate to help support Ghondar development](https://img.shields.io/gratipay/ghondar.svg?style=flat)](https://www.gittip.com/ghondar/)
 
 > Quick dot-notation seeker 
 
