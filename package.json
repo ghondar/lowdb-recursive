@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "mocha": "^2.3.4",
-    "rimraf": "^2.4.4",
+    "rimraf": "^2.5.0",
     "standard": "^5.4.1"
   }
 }
