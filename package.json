@@ -1,6 +1,6 @@
 {
   "name": "lowdb-recursive",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "recursive extension based on lowdb",
   "main": "src/index.js",
   "scripts": {
