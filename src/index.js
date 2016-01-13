@@ -1,11 +1,11 @@
 var _ = require('lodash')
 var low = require('lowdb')
+var storage = require('lowdb/file-sync')
 
 var DataBase = function (path) {
   var db = low(path, {
-    autosave: true,
-    async: false
-  })
+    storage: storage
+  }, true)
   db._.mixin({
     recursive: function (type, update, array, where, value, cb, count, envio) {
       where = where.split('.')
@@ -35,13 +35,13 @@ var DataBase = function (path) {
             })
             cb(array)
           } else {
-            _.forEach(_.where(array, json), function (val) {
+            _.forEach(_.filter(array, json), function (val) {
               _.assign(val, update)
             })
             cb(envio)
           }
         } else if (type === 'FIND') {
-          var dato = _.where(array, json)
+          var dato = _.filter(array, json)
           if (dato.length > 0) {
             cb(dato)
           }
@@ -57,20 +57,20 @@ var DataBase = function (path) {
               })
             }
           } else {
-            if (_.where(array, json).length > 0) {
+            if (_.filter(array, json).length > 0) {
               array.push(update)
             }
           }
           cb(array)
         } else if (type === 'REMOVE') {
           var lista = []
-          _.forEach(_.where(array, json), function (val) {
+          _.forEach(_.filter(array, json), function (val) {
             _.remove(array, val)
             lista.push(val)
           })
           cb(lista)
         } else if (type === 'WHERE') {
-          if (_.where(array, json).length > 0) {
+          if (_.filter(array, json).length > 0) {
             count === 1 ? cb(dato) : cb(envio)
           }
         }
