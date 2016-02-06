@@ -1,12 +1,13 @@
 var fs = require('fs')
 var assert = require('assert')
 var rmrf = require('rimraf')
+var path = require('path')
 var low = require('../src/index')
 
 /* global beforeEach, describe, it */
 
-var tempDir = __dirname + '/../tmp'
-var syncFile = tempDir + '/sync.json'
+var tempDir = path.join(__dirname, '..', 'tmp')
+var syncFile = path.join(tempDir, 'sync.json')
 
 var collectionPush = [ { nombre: 'Villareal', numero: 1, carreras: [ { nombre: 'Fisico', rating: 4.3, cursos: [ { nombre: 'cuantica', id: 1 }, { nombre: 'algebra', id: 2 } ] }, { nombre: 'Matematica', rating: 4, cursos: [ { nombre: 'algebra', id: 2 }, { nombre: 'Aritmetica', id: 3 } ] } ] }, { nombre: 'SanMarcos', numero: 2, carreras: [ { nombre: 'Medicina', rating: 9.6, cursos: [ { nombre: 'Quimica', id: 4 }, { nombre: 'Biologia', id: 5 } ] }, { nombre: 'Metalurgia', rating: 5, cursos: [ { nombre: 'quimica', id: 4 }, { nombre: 'Fisica', id: 5 } ] } ] } ]
 var collection = [ { nombre: 'Villareal', numero: 1, carreras: [ { nombre: 'Fisico', rating: 4.3, cursos: [ { nombre: 'cuantica', id: 1 }, { nombre: 'algebra', id: 2 } ] }, { nombre: 'Matematica', rating: 4, cursos: [ { nombre: 'algebra', id: 2 }, { nombre: 'Aritmetica', id: 3 } ] } ] }, { nombre: 'SanMarcos', numero: 2, carreras: [ { nombre: 'Medicina', rating: 9.6, cursos: [ { nombre: 'Quimica', id: 4 }, { nombre: 'Biologia', id: 5 } ] }, { nombre: 'Metalurgia', rating: 5, cursos: [ { nombre: 'quimica', id: 4 }, { nombre: 'Fisica', id: 5 } ] } ] } ]
