@@ -33,7 +33,7 @@
   "homepage": "https://github.com/abgv9221/lowdb-recursive",
   "dependencies": {
     "lodash": "^4.0.0",
-    "lowdb": "^0.12.0"
+    "lowdb": "^0.15.4"
   },
   "devDependencies": {
     "eslint-config-standard": "^6.0.0",
