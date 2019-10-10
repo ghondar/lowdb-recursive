@@ -1,6 +1,6 @@
 var DataBase = require('./src/index')
 var db = DataBase('./tmp/db.json')
-var collection = [ { nombre: 'Villareal', numero: 1, carreras: [ { nombre: 'Fisico', rating: 4.3, cursos: [ { nombre: 'cuantica', id: 1 }, { nombre: 'algebra', id: 2 } ] }, { nombre: 'Matematica', rating: 4, cursos: [ { nombre: 'algebra', id: 2 }, { nombre: 'Aritmetica', id: 3 } ] } ] }, { nombre: 'SanMarcos', numero: 2, carreras: [ { nombre: 'Medicina', rating: 9.6, cursos: [ { nombre: 'Quimica', id: 4 }, { nombre: 'Biologia', id: 5 } ] }, { nombre: 'Metalurgia', rating: 5, cursos: [ { nombre: 'quimica', id: 4 }, { nombre: 'Fisica', id: 5 } ] } ] } ]
+var collection = [{ nombre: 'Villareal', numero: 1, carreras: [{ nombre: 'Fisico', rating: 4.3, cursos: [{ nombre: 'cuantica', id: 1 }, { nombre: 'algebra', id: 2 }] }, { nombre: 'Matematica', rating: 4, cursos: [{ nombre: 'algebra', id: 2 }, { nombre: 'Aritmetica', id: 3 }] }] }, { nombre: 'SanMarcos', numero: 2, carreras: [{ nombre: 'Medicina', rating: 9.6, cursos: [{ nombre: 'Quimica', id: 4 }, { nombre: 'Biologia', id: 5 }] }, { nombre: 'Metalurgia', rating: 5, cursos: [{ nombre: 'quimica', id: 4 }, { nombre: 'Fisica', id: 5 }] }] }]
 
 /*
   first create a folder ./tmp
@@ -10,7 +10,7 @@ var collection = [ { nombre: 'Villareal', numero: 1, carreras: [ { nombre: 'Fisi
   run this command one time
 */
 collection.forEach(function (document) {
-  db('universidades').push(document)
+  db('universidades').push(document).write()
 })
 
 /* Result:
@@ -36,6 +36,7 @@ collection.forEach(function (document) {
 // db('universidades')
 //   .chain()
 //   .updateAll({ 'carreras.cursos.nombre': 'cuantica' }, { nombre: 'mecanica' })
+//   .write()
 //   .value()
 // )
 // // or
@@ -44,6 +45,7 @@ collection.forEach(function (document) {
 //   .chain()
 //   .findAll({ 'carreras.cursos.nombre': 'cuantica' })
 //   .updateAll({ nombre: 'mecanica' })
+//   .write()
 //   .value()
 // )
 
@@ -52,6 +54,7 @@ collection.forEach(function (document) {
 // db('universidades')
 //   .chain()
 //   .pushAll({ 'carreras.cursos.nombre': 'cuantica' }, { nombre: 'javascript', id: 100 })
+//   .write()
 //   .value()
 // )
 // // or
@@ -60,6 +63,7 @@ collection.forEach(function (document) {
 //   .chain()
 //   .findAll({ 'carreras.rating': 4.3 })
 //   .pushAll({ cursos: { nombre: 'javascript', id: 100 } })
+//   .write()
 //   .value()
 // )
 
@@ -68,5 +72,6 @@ collection.forEach(function (document) {
 // db('universidades')
 //   .chain()
 //   .removeAll({ 'carreras.cursos.nombre': 'cuantica' })
+//   .write()
 //   .value()
 // )

@@ -88,7 +88,7 @@ var collection = [
   ]
 
 collection.forEach(function(document){
-  db('universidades').push(document);
+  db.get('universidades').push(document).write();
 });
 
 ```
@@ -102,14 +102,14 @@ collection.forEach(function(document){
     carreras: [ [Object], [Object] ] } ]
 */
 
-db('universidades').whereAll({ 'carreras.cursos.nombre': 'cuantica'})
+db.get('universidades').whereAll({ 'carreras.cursos.nombre': 'cuantica'})
 
 //or
 /*
   [ { nombre: 'cuantica', id: 1 } ]
 */
 
-db('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
+db.get('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
 
 ```
 
@@ -117,16 +117,18 @@ db('universidades').findAll({ 'carreras.cursos.nombre': 'cuantica'})
   
 ```javascript
 
-db('universidades')
+db.get('universidades')
   .chain()
   .updateAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'mecanica'})
+  .write()
   .value()
 
 //or
-db('universidades')
+db.get('universidades')
   .chain()
   .findAll('carreras.cursos.nombre': 'cuantica')
   .updateAll({'nombre': 'mecanica'})
+  .write()
   .value()
 
 ```
@@ -134,16 +136,18 @@ db('universidades')
   
 ```javascript
 
-db('universidades')
+db.get('universidades')
   .chain()
   .pushAll({'carreras.cursos.nombre': 'cuantica'}, {'nombre': 'javascript', 'id': 100})
+  .write()
   .value()
 
 //or
-db('universidades')
+db.get('universidades')
   .chain()
   .findAll({"carreras.rating": 4.3})
   .pushAll({"cursos": {'nombre': 'javascript', 'id': 100})
+  .write()
   .value()
 
 ```
@@ -152,9 +156,10 @@ db('universidades')
   
 ```javascript
 
-db('universidades')
+db.get('universidades')
   .chain()
   .removeAll({'carreras.cursos.nombre': 'cuantica'})
+  .write()
   .value()
 
 ```

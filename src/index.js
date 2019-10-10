@@ -1,11 +1,10 @@
 var _ = require('lodash')
 var low = require('lowdb')
-var storage = require('lowdb/file-sync')
+var FileSync = require('lowdb/adapters/FileSync')
 
 var DataBase = function (path) {
-  var db = low(path, {
-    storage: storage
-  }, true)
+  const adapter = new FileSync(path)
+  var db = low(adapter)
   db._.mixin({
     recursive: function (type, update, array, where, value, cb, count, envio) {
       where = where.split('.')
@@ -16,17 +15,17 @@ var DataBase = function (path) {
       if (_.compact(where).length > 1) {
         var state = where.shift()
         _.forEach(array, function (document) {
-          if (document[ state ] && count === 1) {
-            that.recursive(type, update, document[ state ],
-                          where.join('.'), value, cb, count, document)
+          if (document[state] && count === 1) {
+            that.recursive(type, update, document[state],
+              where.join('.'), value, cb, count, document)
           } else {
-            that.recursive(type, update, document[ state ],
-                          where.join('.'), value, cb, count, envio)
+            that.recursive(type, update, document[state],
+              where.join('.'), value, cb, count, envio)
           }
         })
       } else {
         var json = {}
-        json[ where.join() ] = value
+        json[where.join()] = value
 
         if (type === 'UPDATE') {
           if ((!update)) {
@@ -49,7 +48,7 @@ var DataBase = function (path) {
           if ((!update)) {
             if (typeof value === 'object' && _.keys(value).length > 0) {
               _.forEach(array, function (document) {
-                document[ where.join() ].push(value)
+                document[where.join()].push(value)
               })
             } else {
               _.forEach(array, function (document) {
